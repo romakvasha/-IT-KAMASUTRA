@@ -18,30 +18,31 @@ const Message = (props) => {
   return <div className={s.dialog}>{props.message}</div>;
 };
 
+const dialogs = [
+  { id: 1, name: "Ruslana" },
+  { id: 2, name: "Roma" },
+  { id: 3, name: "Taras" },
+  { id: 4, name: "Sergey" },
+  { id: 5, name: "Andry" },
+];
+
+const messages = [
+  { id: 1, message: "Привіт" },
+  { id: 2, message: "Пока" },
+  { id: 3, message: "Привіт" },
+  { id: 4, message: "Привіт" },
+  { id: 5, message: "Привіт" },
+];
+
+const dialogsElement = dialogs.map((d) => (
+  <DialogItem name={d.name} id={d.id} />
+));
+
+const messagesElement = messages.map((m) => (
+  <Message message={m.message} id={m.id} />
+));
+
 const Dialogs = (props) => {
-  let dialogs = [
-    { id: 1, name: "Ruslana" },
-    { id: 2, name: "Roma" },
-    { id: 3, name: "Taras" },
-    { id: 4, name: "Sergey" },
-    { id: 5, name: "Andry" },
-  ];
-
-  let messages = [
-    { id: 1, message: "Привіт" },
-    { id: 2, message: "Пока" },
-    { id: 3, message: "Привіт" },
-    { id: 4, message: "Привіт" },
-    { id: 5, message: "Привіт" },
-  ];
-
-  let dialogsElement = dialogs.map((d) => (
-    <DialogItem name={d.name} id={d.id} />
-  ));
-
-  let messagesElement = messages.map((m) => (
-    <Message message={m.message} id={m.id} />
-  ));
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>{dialogsElement}</div>
@@ -51,12 +52,3 @@ const Dialogs = (props) => {
 };
 
 export default Dialogs;
-
-//const DIALOGS = "/dialogs";
-//const dialogItems = ["Руслана", "Роман", "Тарас", "Сірожа", "Андрій"];
-/*<div className={s.dialogs}>
-      <div className={s.dialogsItems}>
-        {dialogItems.map((el, index) => (
-          <DialogItem name={el} id={index + 1} key={`DialogItem_${index}`} />
-        ))} 
-      </div>*/
