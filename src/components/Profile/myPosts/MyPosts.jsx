@@ -9,7 +9,6 @@ const postData = [
 ];
 
 const MyPosts = () => {
-  let MyPostsElement = postData.map((p) => (
     <Post message={p.message} id={p.id} likesCount={p.likesCount} />
   ));
 
