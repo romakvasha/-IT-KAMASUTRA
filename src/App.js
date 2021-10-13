@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Nav from "./components/Nav/Nav";
+import Nav from "./components/NavBar/Nav";
 import Header from "./components/Header/Header";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
@@ -14,8 +14,16 @@ const App = (props) => {
         <Header />
         <Nav />
         <div class="app-wrapper-content">
-          <Route path={PROFILE} component={Profile} />
-          <Route path={DIALOGS} component={Dialogs} />
+          <Route
+            path={PROFILE}
+            render={() => <Profile postData={props.postData} />}
+          />
+          <Route
+            path={DIALOGS}
+            render={() => (
+              <Dialogs messages={props.messages} dialogs={props.dialogs} />
+            )}
+          />
         </div>
       </div>
     </BrowserRouter>
