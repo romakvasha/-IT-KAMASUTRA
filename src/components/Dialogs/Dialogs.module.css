@@ -3,26 +3,11 @@
     grid-template-columns: 2fr 10fr;
 }
 
-.dialog .dialogsItems {
-    padding: 10px;
-    text-decoration: none;
-    color: white;
-}
-
 .dialog {
     text-decoration: none;
     color: rgb(240, 98, 98);
 }
 
-.active {
-    color: gold;
-}
-
 .messages {
     padding: 10px;
-}
-
-a {
-    text-decoration: none;
-    color: rgb(250, 73, 206)
 }

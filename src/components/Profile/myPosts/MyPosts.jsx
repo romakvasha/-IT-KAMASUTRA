@@ -3,9 +3,7 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
-  const MyPostsElement = props.data.map((p) => (
-    <Post message={p.message} id={p.id} likesCount={p.likesCount} />
-  ));
+  const MyPostsElement = props.data.map((item) => <Post item={item} />);
 
   return (
     <div className={s.postsBlog}>

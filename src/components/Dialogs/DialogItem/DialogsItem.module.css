@@ -1,0 +1,25 @@
+.dialog .dialogsItems {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.dialog a.active {
+    color: silver;
+}
+
+.dialog a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    margin-left: 5px;
+}
+
+.dialog img {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.dialog {
+    margin: 10px;
+}
