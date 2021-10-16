@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
 import { DIALOGS, MUSIC, NEWS, PROFILE, SETTING } from "./constats";
-import FriendsBar from "./FriendsBar/FriendsBar";
+import FriendsBar from "./../FriendsBar/FriendsBar";
 
 const Nav = () => {
   return (
