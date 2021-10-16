@@ -42,4 +42,20 @@ export const data = {
       },
     ],
   },
+  navPage: {
+    navFrinds: [
+      {
+        name: "Ruslana",
+        img: "https://crosti.ru/patterns/00/09/59/dc0d3fd8fa/picture.jpg",
+      },
+      {
+        name: "Roma",
+        img: "https://crosti.ru/patterns/00/09/59/dc0d3fd8fa/picture.jpg",
+      },
+      {
+        name: "Taras",
+        img: "https://crosti.ru/patterns/00/09/59/dc0d3fd8fa/picture.jpg",
+      },
+    ],
+  },
 };
