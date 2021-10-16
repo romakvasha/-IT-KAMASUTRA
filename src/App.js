@@ -11,18 +11,16 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-        <Header />
+        <Header data={props.data.navPage} />
         <Nav />
         <div class="app-wrapper-content">
           <Route
-            path={PROFILE}
-            render={() => <Profile postData={props.postData} />}
+            path={DIALOGS}
+            render={() => <Dialogs data={props.data.messagesPage} />}
           />
           <Route
-            path={DIALOGS}
-            render={() => (
-              <Dialogs messages={props.messages} dialogs={props.dialogs} />
-            )}
+            path={PROFILE}
+            render={() => <Profile data={props.data.profilePage} />}
           />
         </div>
       </div>
