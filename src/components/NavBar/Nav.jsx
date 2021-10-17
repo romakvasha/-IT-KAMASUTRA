@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 import { DIALOGS, MUSIC, NEWS, PROFILE, SETTING } from "./constats";
 import FriendsBar from "./../FriendsBar/FriendsBar";
 
-const Nav = () => {
+const Nav = ({ data }) => {
+  const friendsBarElement = data.map((item) => <FriendsBar item={item} />);
+
   return (
     <div>
       <nav className={s.nav}>
@@ -27,7 +29,10 @@ const Nav = () => {
         <div className={s.item}>
           <NavLink to={SETTING}>Settings</NavLink>
         </div>
-        <FriendsBar />
+        <div className={s.friendsBarItems}>
+          <h5>Friends 1</h5>
+          {friendsBarElement}
+        </div>
       </nav>
     </div>
   );
