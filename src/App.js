@@ -11,8 +11,8 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-        <Header data={props.data.navPage} />
-        <Nav />
+        <Header />
+        <Nav data={props.data.navPage.navFriends} />
         <div class="app-wrapper-content">
           <Route
             path={DIALOGS}
