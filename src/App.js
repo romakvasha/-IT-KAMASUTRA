@@ -20,7 +20,11 @@ const App = (props) => {
         <Route
           path={PROFILE}
           render={() => (
-            <Profile data={props.data.profilePage} addPost={props.addPost} />
+            <Profile
+              profilePage={props.data.profilePage}
+              addPost={props.addPost}
+              updateNewPostText={props.updateNewPostText}
+            />
           )}
         />
       </div>
