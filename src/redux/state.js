@@ -1,5 +1,4 @@
-import { renderEntireTree } from "../render";
-
+let renderEntireTree = () => {};
 export const data = {
   profilePage: {
     postData: [
@@ -7,6 +6,7 @@ export const data = {
       { id: 2, message: "Це мій перший пост", likesCount: 20 },
       { id: 3, message: "Це мій другий пост", likesCount: 30 },
     ],
+    newPostText: "",
   },
   messagesPage: {
     messages: [
@@ -65,12 +65,22 @@ export const data = {
   },
 };
 
-export const addPost = (postMessage) => {
+export const addPost = () => {
   const newPost = {
     id: 5,
-    message: postMessage,
+    message: data.profilePage.newPostText,
     likesCount: 0,
   };
   data.profilePage.postData.push(newPost);
+  data.profilePage.newPostText = "";
   renderEntireTree(data);
+};
+
+export const updateNewPostText = (newTex) => {
+  data.profilePage.newPostText = newTex;
+  renderEntireTree(data);
+};
+
+export const subscribe = (observer) => {
+  renderEntireTree = observer;
 };
