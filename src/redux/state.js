@@ -1,3 +1,6 @@
+const ADD_POST = "ADD-POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+
 const store = {
   _data: {
     profilePage: {
@@ -64,28 +67,36 @@ const store = {
       ],
     },
   },
+  _callSubscruber() {},
   getData() {
     return this._data;
-  },
-  _callSubscruber() {},
-  addPost() {
-    const newPost = {
-      id: 5,
-      message: this._data.profilePage.newPostText,
-      likesCount: 0,
-    };
-    this._data.profilePage.postData.push(newPost);
-    this._data.profilePage.newPostText = "";
-    this._callSubscruber(this._data);
-  },
-  updateNewPostText(newTex) {
-    this._data.profilePage.newPostText = newTex;
-    this._callSubscruber(this._data);
   },
   subscribe(observer) {
     this._callSubscruber = observer;
   },
+  dispatch(action) {
+    if (action.type === ADD_POST) {
+      const newPost = {
+        id: 5,
+        message: this._data.profilePage.newPostText,
+        likesCount: 0,
+      };
+      this._data.profilePage.postData.push(newPost);
+      this._data.profilePage.newPostText = "";
+      this._callSubscruber(this._data);
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
+      this._data.profilePage.newPostText = action.newText;
+      this._callSubscruber(this._data);
+    }
+  },
 };
+
+export const addPostActionCreator = () => ({ type: ADD_POST });
+
+export const updateNewPostTextActionCreator = (text) => ({
+  type: UPDATE_NEW_POST_TEXT,
+  newText: text,
+});
 
 export default store;
 window.store = store;
