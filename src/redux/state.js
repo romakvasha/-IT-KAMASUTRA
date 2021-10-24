@@ -1,5 +1,7 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const ADD_MESSAGE = "ADD-MESSAGE";
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 
 const store = {
   _data: {
@@ -12,13 +14,8 @@ const store = {
       newPostText: "",
     },
     messagesPage: {
-      messages: [
-        { id: 1, message: "Привіт" },
-        { id: 2, message: "Пока" },
-        { id: 3, message: "Привіт" },
-        { id: 4, message: "Привіт" },
-        { id: 5, message: "Привіт" },
-      ],
+      messages: [{ id: 1, message: "Привіт" }],
+      newMessageText: "",
       dialogs: [
         {
           id: 1,
@@ -77,7 +74,7 @@ const store = {
   dispatch(action) {
     if (action.type === ADD_POST) {
       const newPost = {
-        id: 5,
+        id: Date.now(),
         message: this._data.profilePage.newPostText,
         likesCount: 0,
       };
@@ -87,6 +84,17 @@ const store = {
     } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._data.profilePage.newPostText = action.newText;
       this._callSubscruber(this._data);
+    } else if (action.type === ADD_MESSAGE) {
+      const newMessage = {
+        id: Date.now(),
+        message: this._data.messagesPage.newMessageText,
+      };
+      this._data.messagesPage.messages.push(newMessage);
+      this._data.messagesPage.newMessageText = "";
+      this._callSubscruber(this._data);
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+      this._data.messagesPage.newMessageText = action.newText;
+      this._callSubscruber(this._data);
     }
   },
 };
@@ -95,6 +103,13 @@ export const addPostActionCreator = () => ({ type: ADD_POST });
 
 export const updateNewPostTextActionCreator = (text) => ({
   type: UPDATE_NEW_POST_TEXT,
+  newText: text,
+});
+
+export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });
+
+export const updateNewMessageTextActionCreator = (text) => ({
+  type: UPDATE_NEW_MESSAGE_TEXT,
   newText: text,
 });
 
