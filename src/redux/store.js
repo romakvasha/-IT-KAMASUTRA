@@ -1,7 +1,6 @@
-const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const ADD_MESSAGE = "ADD-MESSAGE";
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
+import messagesReducer from "./messages-reducer";
+import navReducer from "./navPage-reducer";
+import profileReducer from "./profile-reducer";
 
 const store = {
   _data: {
@@ -72,46 +71,12 @@ const store = {
     this._callSubscruber = observer;
   },
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      const newPost = {
-        id: Date.now(),
-        message: this._data.profilePage.newPostText,
-        likesCount: 0,
-      };
-      this._data.profilePage.postData.push(newPost);
-      this._data.profilePage.newPostText = "";
-      this._callSubscruber(this._data);
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._data.profilePage.newPostText = action.newText;
-      this._callSubscruber(this._data);
-    } else if (action.type === ADD_MESSAGE) {
-      const newMessage = {
-        id: Date.now(),
-        message: this._data.messagesPage.newMessageText,
-      };
-      this._data.messagesPage.messages.push(newMessage);
-      this._data.messagesPage.newMessageText = "";
-      this._callSubscruber(this._data);
-    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-      this._data.messagesPage.newMessageText = action.newText;
-      this._callSubscruber(this._data);
-    }
+    this._data.profilePage = profileReducer(this._data.profilePage, action);
+    this._data.messagesPage = messagesReducer(this._data.messagesPage, action);
+    this._data.navPage = navReducer(this._data.navPage, action);
+    this._callSubscruber(this._data);
   },
 };
-
-export const addPostActionCreator = () => ({ type: ADD_POST });
-
-export const updateNewPostTextActionCreator = (text) => ({
-  type: UPDATE_NEW_POST_TEXT,
-  newText: text,
-});
-
-export const addMessageActionCreator = () => ({ type: ADD_MESSAGE });
-
-export const updateNewMessageTextActionCreator = (text) => ({
-  type: UPDATE_NEW_MESSAGE_TEXT,
-  newText: text,
-});
 
 export default store;
 window.store = store;
