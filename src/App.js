@@ -8,16 +8,17 @@ import { Route } from "react-router-dom";
 import { DIALOGS, PROFILE } from "./components/NavBar/constats";
 
 const App = (props) => {
+  debugger;
   return (
     <div className="app-wrapper">
       <Header />
-      <Nav data={props.data.navPage.navFriends} />
+      <Nav navPage={props.state.navPage} />
       <div class="app-wrapper-content">
         <Route
           path={DIALOGS}
           render={() => (
             <Dialogs
-              messagesPage={props.data.messagesPage}
+              messagesPage={props.state.messagesPage}
               dispatch={props.dispatch}
             />
           )}
@@ -26,7 +27,7 @@ const App = (props) => {
           path={PROFILE}
           render={() => (
             <Profile
-              profilePage={props.data.profilePage}
+              profilePage={props.state.profilePage}
               dispatch={props.dispatch}
             />
           )}
