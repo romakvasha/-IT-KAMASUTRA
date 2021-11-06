@@ -3,7 +3,7 @@ const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 
 const initialState = {
   messages: [{ id: 1, message: "Привіт" }],
-  newMessageText: "",
+  newMessageText: "Hello",
   dialogs: [
     {
       id: 1,
@@ -33,21 +33,27 @@ const initialState = {
   ],
 };
 
-const messagesReducer = (data = initialState, action) => {
+const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_MESSAGE:
+    case ADD_MESSAGE: {
       const newMessage = {
         id: Date.now(),
-        message: data.newMessageText,
+        message: state.newMessageText,
       };
-      data.messages.push(newMessage);
-      data.newMessageText = "";
-      return data;
-    case UPDATE_NEW_MESSAGE_TEXT:
-      data.newMessageText = action.newText;
-      return data;
+      const stateCopy = { ...state };
+      stateCopy.messages = [...state.messages];
+      stateCopy.messages.push(newMessage);
+      stateCopy.newMessageText = "";
+      return stateCopy;
+    }
+    case UPDATE_NEW_MESSAGE_TEXT: {
+      const stateCopy = { ...state };
+      stateCopy.newMessageText = action.newText;
+
+      return stateCopy;
+    }
     default:
-      return data;
+      return state;
   }
 };
 

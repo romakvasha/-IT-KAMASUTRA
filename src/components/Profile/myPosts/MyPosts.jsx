@@ -3,7 +3,9 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
-  const MyPostsElement = props.postData.map((item) => <Post item={item} />);
+  const MyPostsElement = props.profilePage.postData.map((item) => (
+    <Post item={item} />
+  ));
   const newPostElement = React.createRef();
 
   const onAddPost = () => {
@@ -12,7 +14,7 @@ const MyPosts = (props) => {
 
   const onPostChange = () => {
     const text = newPostElement.current.value;
-    props.updateNewPostText(text);
+    props.onPostChange(text);
   };
 
   return (
@@ -24,7 +26,7 @@ const MyPosts = (props) => {
             <textarea
               onChange={onPostChange}
               ref={newPostElement}
-              value={props.newPostText}
+              value={props.profilePage.newPostText}
             />
           </div>
           <div>

@@ -5,9 +5,9 @@ import { DIALOGS, MUSIC, NEWS, PROFILE, SETTING } from "./constats";
 import FriendsBar from "./../FriendsBar/FriendsBar";
 
 const Nav = (props) => {
-  const friendsBarElement = props.navPage.navFriends.map((item) => (
+  /*const friendsBarElement = props.navPage.navFriends.map((item) => (
     <FriendsBar item={item} />
-  ));
+  ));*/
 
   return (
     <div>
@@ -33,7 +33,7 @@ const Nav = (props) => {
         </div>
         <div className={s.friendsBarItems}>
           <h5>Friends 1</h5>
-          {friendsBarElement}
+          {/* {friendsBarElement}*/}
         </div>
       </nav>
     </div>
