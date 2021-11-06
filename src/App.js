@@ -11,13 +11,10 @@ const App = (props) => {
   return (
     <div className="app-wrapper">
       <Header />
-      <Nav navPage={props.state.navPage} />
+      <Nav />
       <div class="app-wrapper-content">
-        <Route
-          path={DIALOGS}
-          render={() => <DialogsContainer store={props.store} />}
-        />
-        <Route path={PROFILE} render={() => <Profile store={props.store} />} />
+        <Route path={DIALOGS} render={() => <DialogsContainer />} />
+        <Route path={PROFILE} render={() => <Profile />} />
       </div>
     </div>
   );

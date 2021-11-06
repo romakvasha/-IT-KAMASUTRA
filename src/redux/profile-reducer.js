@@ -3,23 +3,27 @@ const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
 const initialState = {
   postData: [{ id: 1, message: "Привіт, як справи?", likesCount: 12 }],
-  newPostText: "",
+  newPostText: "Roman",
 };
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_POST:
+    case ADD_POST: {
       const newPost = {
         id: Date.now(),
         message: state.newPostText,
         likesCount: 0,
       };
-      state.postData.push(newPost);
-      state.newPostText = "";
-      return state;
+      const stateCopy = { ...state };
+      stateCopy.postData = [...state.postData];
+      stateCopy.postData.push(newPost);
+      stateCopy.newPostText = "";
+      return stateCopy;
+    }
     case UPDATE_NEW_POST_TEXT:
-      state.newPostText = action.newText;
-      return state;
+      const stateCopy = { ...state };
+      stateCopy.newPostText = action.newText;
+      return stateCopy;
     default:
       return state;
   }
