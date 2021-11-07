@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./FriendsBar.module.css";
-import { NavLink } from "react-router-dom";
 
 const FriendsBar = ({ item }) => {
   const { img, name, alt } = item;

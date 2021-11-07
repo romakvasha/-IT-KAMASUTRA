@@ -1,14 +1,9 @@
 import React from "react";
 import s from "./Nav.module.css";
 import { NavLink } from "react-router-dom";
-import { DIALOGS, MUSIC, NEWS, PROFILE, SETTING } from "./constats";
-import FriendsBar from "./../FriendsBar/FriendsBar";
+import { DIALOGS, FINDUSERS, MUSIC, NEWS, PROFILE, SETTING } from "./constats";
 
 const Nav = (props) => {
-  /*const friendsBarElement = props.navPage.navFriends.map((item) => (
-    <FriendsBar item={item} />
-  ));*/
-
   return (
     <div>
       <nav className={s.nav}>
@@ -32,8 +27,9 @@ const Nav = (props) => {
           <NavLink to={SETTING}>Settings</NavLink>
         </div>
         <div className={s.friendsBarItems}>
-          <h5>Friends 1</h5>
-          {/* {friendsBarElement}*/}
+          <NavLink to={FINDUSERS} activeClassName={s.active}>
+            <h5>Find Users</h5>
+          </NavLink>
         </div>
       </nav>
     </div>
