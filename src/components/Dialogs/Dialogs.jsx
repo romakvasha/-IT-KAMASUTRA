@@ -10,6 +10,7 @@ const Dialogs = (props) => {
 
   const messagesElement = props.messagesPage.messages.map((item) => (
     <Message item={item} key={item.id} />
+
   ));
 
   const newMessageElement = React.createRef();
