@@ -1,3 +1,4 @@
+import authReducer from "./auth-reducer";
 import messagesReducer from "./messages-reducer";
 import navReducer from "./navPage-reducer";
 import profileReducer from "./profile-reducer";
@@ -10,6 +11,7 @@ const reducers = combineReducers({
   messagesPage: messagesReducer,
   navPage: navReducer,
   usersPage: usersReducer,
+  auth: authReducer,
 });
 
 const store = createStore(reducers);
