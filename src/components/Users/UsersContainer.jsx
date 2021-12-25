@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import {
   follow,
   setCurrentPage,
+  setTotalUsersCount,
+  setUsers,
+  toggletIsFetching,
   unfollow,
   toggletIsFollowingProgres,
   getUsers,
@@ -15,10 +18,26 @@ import { usersAPI } from "../../api/api";
 class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.getUsers(this.props.currentPage, this.props.pageSize);
+
+    /*this.props.toggletIsFetching(true);
+    usersAPI.getUsers().then((data) => {
+      this.props.toggletIsFetching(false);
+      this.props.setUsers(data.items);
+      this.props.setTotalUsersCount(data.totalCount);
+    });*/
   }
 
   onPageChanget = (pageNumber) => {
-    this.props.getUsers(pageNumber, this.props.pageSize);
+    this.props.setCurrentPage(pageNumber);
+    this.props.toggletIsFetching(true);
+    axios
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`
+      )
+      .then((response) => {
+        this.props.toggletIsFetching(false);
+        this.props.setUsers(response.data.items);
+      });
   };
 
   render() {
@@ -33,6 +52,7 @@ class UsersContainer extends React.Component {
           users={this.props.users}
           follow={this.props.follow}
           unfollow={this.props.unfollow}
+          toggletIsFollowingProgres={this.props.toggletIsFollowingProgres}
           followingInProgress={this.props.followingInProgress}
         />
       </>
@@ -76,7 +96,10 @@ const mapStateToProps = (state) => {
 const FindUsersContainer = connect(mapStateToProps, {
   follow,
   unfollow,
+  setUsers,
   setCurrentPage,
+  setTotalUsersCount,
+  toggletIsFetching,
   toggletIsFollowingProgres,
   getUsers,
 })(UsersContainer);
