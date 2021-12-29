@@ -6,6 +6,7 @@ import { withRouter } from "react-router";
 import { LOGIN } from "../NavBar/constats";
 import { Redirect } from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/wuthAuthRedirect";
+import { compose } from "redux";
 class ProfileContainer extends React.Component {
   componentDidMount() {
     let userId = this.props.match.params.userId;
@@ -25,14 +26,12 @@ class ProfileContainer extends React.Component {
   }
 }
 
-let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
-
 const mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
 });
 
-const WitcUrlDataContainerComponent = withRouter(AuthRedirectComponent);
-
-export default connect(mapStateToProps, { getUsersProfile })(
-  WitcUrlDataContainerComponent
-);
+export default compose(
+  connect(mapStateToProps, { getUsersProfile }),
+  withRouter,
+  withAuthRedirect
+)(ProfileContainer);
