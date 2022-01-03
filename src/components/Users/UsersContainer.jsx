@@ -13,7 +13,6 @@ import {
 import Users from "./Users";
 import * as axios from "axios";
 import Preloader from "../common/preloader/preloader";
-import { usersAPI } from "../../api/api";
 import { withAuthRedirect } from "../../hoc/wuthAuthRedirect";
 import { compose } from "redux";
 
@@ -94,17 +93,16 @@ const mapStateToProps = (state) => {
     },
   };
 };*/
-
 export default compose(
+  withAuthRedirect,
   connect(mapStateToProps, {
     follow,
     unfollow,
-    setUsers,
     setCurrentPage,
-    setTotalUsersCount,
-    toggletIsFetching,
     toggletIsFollowingProgres,
     getUsers,
-  }),
-  withAuthRedirect
+    toggletIsFetching,
+    setTotalUsersCount,
+    setUsers,
+  })
 )(UsersContainer);
