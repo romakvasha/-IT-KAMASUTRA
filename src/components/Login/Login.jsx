@@ -6,6 +6,7 @@ import { Input } from "../common/FormsControls/formsControls";
 import { login } from "../../redux/auth-reducer";
 import { Redirect } from "react-router-dom";
 import { PROFILE } from "../NavBar/constats";
+import style from "./../common/FormsControls/formsControls.module.css";
 
 const LoginForm = (props) => {
   console.log("render");
@@ -31,8 +32,11 @@ const LoginForm = (props) => {
       </div>
       <div>
         <Field component={Input} name={"rememberMe"} type={"checkbox"} />
-      </div>{" "}
-      remember me
+        remember me
+      </div>
+      {props.error && (
+        <div className={style.formSammaryError}>{props.error}</div>
+      )}
       <div>
         <button> Login</button>
       </div>
