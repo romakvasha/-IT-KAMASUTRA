@@ -10,19 +10,20 @@ import { withRouter } from "react-router";
 import { compose } from "redux";
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.match.params.userId;
+    const { match, authorizedUserId, history, getUsersProfile, getStatus } =
+      this.props;
+    let userId = match.params.userId;
     if (!userId) {
-      userId = this.props.authorizedUserId;
+      userId = authorizedUserId;
       if (!userId) {
-        this.props.history.push("/login");
+        history.push("/login");
       }
     }
-    this.props.getUsersProfile(userId);
-    this.props.getStatus(userId);
+    getUsersProfile(userId);
+    getStatus(userId);
   }
 
   render() {
-    //if (!this.props.isAuth) return <Redirect to={LOGIN} />;
     return (
       <div>
         <Profile
