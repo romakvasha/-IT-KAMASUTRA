@@ -8,8 +8,8 @@ import {
 } from "../../../utils/validators/validators";
 import { Textarea } from "../../common/FormsControls/formsControls";
 
-const MyPosts = React.memo((props) => {
-  const MyPostsElement = props.profilePage.postData.map((item) => (
+const MyPosts = React.memo(({ profilePage, ...props }) => {
+  const MyPostsElement = profilePage.postData.map((item) => (
     <Post item={item} key={item.id} />
   ));
 
