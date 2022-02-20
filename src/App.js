@@ -8,15 +8,23 @@ import {
   LOGIN,
   PROFILE,
 } from "./components/NavBar/constats";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
-import { connect } from "react-redux";
+import { connect, Provider } from "react-redux";
 import { initializeApp } from "../src/redux/app-reducer";
 import { compose } from "redux";
 import Preloader from "./components/common/preloader/preloader";
+import { BrowserRouter } from "react-router-dom";
+import store from "./redux/redux-store";
+import { withSuspense } from "./hoc/withSuspense";
+
+const DialogsContainer = React.lazy(() =>
+  import("./components/Dialogs/DialogsContainer")
+);
+const ProfileContainer = React.lazy(() =>
+  import("./components/Profile/ProfileContainer")
+);
 
 class App extends React.Component {
   componentDidMount() {
@@ -31,8 +39,8 @@ class App extends React.Component {
         <HeaderContainer />
         <Nav />
         <div class="app-wrapper-content">
-          <Route path={DIALOGS} render={() => <DialogsContainer />} />
-          <Route path={PROFILE} render={() => <ProfileContainer />} />
+          <Route path={DIALOGS} render={withSuspense(DialogsContainer)} />
+          <Route path={PROFILE} render={withSuspense(ProfileContainer)} />
           <Route path={FINDUSERS} render={() => <UsersContainer />} />
           <Route path={LOGIN} render={() => <Login />} />
         </div>
@@ -45,7 +53,19 @@ const mapStateToProps = (state) => ({
   initialized: state.app.initialized,
 });
 
-export default compose(
+const AppContainer = compose(
   withRouter,
   connect(mapStateToProps, { initializeApp })
 )(App);
+
+const MainApp = (props) => {
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </BrowserRouter>
+  );
+};
+
+export default MainApp;

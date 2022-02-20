@@ -7,7 +7,12 @@ import thankMiddleware from "redux-thunk";
 import { reducer as formReducer } from "redux-form";
 import appReducer from "./app-reducer";
 
-const { createStore, combineReducers, applyMiddleware } = require("redux");
+const {
+  createStore,
+  combineReducers,
+  applyMiddleware,
+  compose,
+} = require("redux");
 
 const reducers = combineReducers({
   profilePage: profileReducer,
@@ -19,6 +24,10 @@ const reducers = combineReducers({
   app: appReducer,
 });
 
-const store = createStore(reducers, applyMiddleware(thankMiddleware));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  reducers,
+  composeEnhancers(applyMiddleware(thankMiddleware))
+);
 
 export default store;
