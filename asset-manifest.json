@@ -1,30 +1,30 @@
 {
   "files": {
     "main.css": "/IT-KAMASUTRA-JS-React-Redux/static/css/main.2c82bcf4.chunk.css",
-    "main.js": "/IT-KAMASUTRA-JS-React-Redux/static/js/main.d03113db.chunk.js",
-    "main.js.map": "/IT-KAMASUTRA-JS-React-Redux/static/js/main.d03113db.chunk.js.map",
-    "runtime-main.js": "/IT-KAMASUTRA-JS-React-Redux/static/js/runtime-main.7a5e689f.js",
-    "runtime-main.js.map": "/IT-KAMASUTRA-JS-React-Redux/static/js/runtime-main.7a5e689f.js.map",
-    "static/js/2.22bced3e.chunk.js": "/IT-KAMASUTRA-JS-React-Redux/static/js/2.22bced3e.chunk.js",
-    "static/js/2.22bced3e.chunk.js.map": "/IT-KAMASUTRA-JS-React-Redux/static/js/2.22bced3e.chunk.js.map",
+    "main.js": "/IT-KAMASUTRA-JS-React-Redux/static/js/main.10961b25.chunk.js",
+    "main.js.map": "/IT-KAMASUTRA-JS-React-Redux/static/js/main.10961b25.chunk.js.map",
+    "runtime-main.js": "/IT-KAMASUTRA-JS-React-Redux/static/js/runtime-main.6d22883e.js",
+    "runtime-main.js.map": "/IT-KAMASUTRA-JS-React-Redux/static/js/runtime-main.6d22883e.js.map",
+    "static/js/2.37c92b7a.chunk.js": "/IT-KAMASUTRA-JS-React-Redux/static/js/2.37c92b7a.chunk.js",
+    "static/js/2.37c92b7a.chunk.js.map": "/IT-KAMASUTRA-JS-React-Redux/static/js/2.37c92b7a.chunk.js.map",
     "static/css/3.710b12db.chunk.css": "/IT-KAMASUTRA-JS-React-Redux/static/css/3.710b12db.chunk.css",
     "static/js/3.c8eebae1.chunk.js": "/IT-KAMASUTRA-JS-React-Redux/static/js/3.c8eebae1.chunk.js",
     "static/js/3.c8eebae1.chunk.js.map": "/IT-KAMASUTRA-JS-React-Redux/static/js/3.c8eebae1.chunk.js.map",
     "static/css/4.b64b2dd3.chunk.css": "/IT-KAMASUTRA-JS-React-Redux/static/css/4.b64b2dd3.chunk.css",
-    "static/js/4.f4a1ab14.chunk.js": "/IT-KAMASUTRA-JS-React-Redux/static/js/4.f4a1ab14.chunk.js",
-    "static/js/4.f4a1ab14.chunk.js.map": "/IT-KAMASUTRA-JS-React-Redux/static/js/4.f4a1ab14.chunk.js.map",
+    "static/js/4.ea27ddd6.chunk.js": "/IT-KAMASUTRA-JS-React-Redux/static/js/4.ea27ddd6.chunk.js",
+    "static/js/4.ea27ddd6.chunk.js.map": "/IT-KAMASUTRA-JS-React-Redux/static/js/4.ea27ddd6.chunk.js.map",
     "index.html": "/IT-KAMASUTRA-JS-React-Redux/index.html",
     "static/css/3.710b12db.chunk.css.map": "/IT-KAMASUTRA-JS-React-Redux/static/css/3.710b12db.chunk.css.map",
     "static/css/4.b64b2dd3.chunk.css.map": "/IT-KAMASUTRA-JS-React-Redux/static/css/4.b64b2dd3.chunk.css.map",
     "static/css/main.2c82bcf4.chunk.css.map": "/IT-KAMASUTRA-JS-React-Redux/static/css/main.2c82bcf4.chunk.css.map",
-    "static/js/2.22bced3e.chunk.js.LICENSE.txt": "/IT-KAMASUTRA-JS-React-Redux/static/js/2.22bced3e.chunk.js.LICENSE.txt",
+    "static/js/2.37c92b7a.chunk.js.LICENSE.txt": "/IT-KAMASUTRA-JS-React-Redux/static/js/2.37c92b7a.chunk.js.LICENSE.txt",
     "static/media/preloader.4c0dabf6.gif": "/IT-KAMASUTRA-JS-React-Redux/static/media/preloader.4c0dabf6.gif",
     "static/media/usersPhoto.a525e5ed.jpg": "/IT-KAMASUTRA-JS-React-Redux/static/media/usersPhoto.a525e5ed.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.7a5e689f.js",
-    "static/js/2.22bced3e.chunk.js",
+    "static/js/runtime-main.6d22883e.js",
+    "static/js/2.37c92b7a.chunk.js",
     "static/css/main.2c82bcf4.chunk.css",
-    "static/js/main.d03113db.chunk.js"
+    "static/js/main.10961b25.chunk.js"
   ]
 }
