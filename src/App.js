@@ -18,6 +18,7 @@ import Preloader from "./components/common/preloader/preloader";
 import { BrowserRouter } from "react-router-dom";
 import store from "./redux/redux-store";
 import { withSuspense } from "./hoc/withSuspense";
+import { HashRouter as Router } from "react-router-dom";
 
 const DialogsContainer = React.lazy(() =>
   import("./components/Dialogs/DialogsContainer")
@@ -60,11 +61,11 @@ const AppContainer = compose(
 
 const MainApp = (props) => {
   return (
-    <BrowserRouter>
+    <Router>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </BrowserRouter>
+    </Router>
   );
 };
 
