@@ -6,7 +6,7 @@ import {
   maxLengthCreator,
   required,
 } from "../../../utils/validators/validators";
-import { Textarea } from "../../common/FormsControls/formsControls";
+import { Textarea } from "../../common/FormsControls/FormsControls";
 
 const MyPosts = React.memo(({ profilePage, ...props }) => {
   const MyPostsElement = profilePage.postData.map((item) => (
