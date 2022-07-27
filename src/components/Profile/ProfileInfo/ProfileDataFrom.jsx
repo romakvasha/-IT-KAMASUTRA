@@ -5,7 +5,7 @@ import {
   Input,
   Textarea,
 } from "../../common/FormsControls/FormsControls";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import style from "../../common/FormsControls/FormsControls.module.css";
 
 const ProfileDataForm = ({ handleSubmit, profile, error }) => {
@@ -15,8 +15,6 @@ const ProfileDataForm = ({ handleSubmit, profile, error }) => {
         <button>save</button>
       </div>
       {error && <div className={style.formSummaryError}>{error}</div>}
-
-      
 
       <div>
         <b>Full name</b>: {createField("Full name", "fullName", [], Input)}
