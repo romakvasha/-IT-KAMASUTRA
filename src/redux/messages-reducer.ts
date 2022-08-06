@@ -1,7 +1,17 @@
 const ADD_MESSAGE = "ADD-MESSAGE";
 
+type DialogType = {
+  id: number
+  name: string
+  img: string
+}
+type MessageType = {
+  id: number
+  message: string
+}
+
 const initialState = {
-  messages: [{ id: 1, message: "Привіт" }],
+  messages: [{ id: 1, message: "Привіт" }]as Array<MessageType>,
   dialogs: [
     {
       id: 1,
@@ -28,10 +38,12 @@ const initialState = {
       name: "Andry",
       img: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Felis_silvestris_silvestris.jpg",
     },
-  ],
+  ] as Array<DialogType>,
 };
 
-const messagesReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState
+
+const messagesReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case ADD_MESSAGE:
       const body = action.newMessageBody;
@@ -51,7 +63,12 @@ const messagesReducer = (state = initialState, action) => {
   }
 };
 
-export const addMessage = (newMessageBody) => ({
+type SendMessageCreatorActionType = {
+  type: typeof ADD_MESSAGE
+  newMessageBody: string
+}
+
+export const addMessage = (newMessageBody: string):SendMessageCreatorActionType => ({
   type: ADD_MESSAGE,
   newMessageBody,
 });

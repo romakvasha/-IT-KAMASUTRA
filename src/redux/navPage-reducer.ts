@@ -18,7 +18,9 @@ const initialState = {
   ],
 };
 
-const navReducer = (state = initialState, action) => {
+type InitialStateType = typeof initialState;
+
+const navReducer = (state = initialState, action:any): InitialStateType => {
   return state;
 };
 
