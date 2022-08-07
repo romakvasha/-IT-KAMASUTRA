@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, DefaultRootState } from "react-redux";
 import {
   follow,
   setCurrentPage,
@@ -23,28 +23,51 @@ import {
   getTotalUsersCount,
   getUsersSel,
 } from "../../redux/users-selectors";
+import { UserType } from '../../types/types';
+import { AppStateType } from '../../redux/redux-store';
 
-class UsersContainer extends React.Component {
+type MapStatePropsType = {
+  currentPage: number
+  pageSize: number
+  isFetching: boolean
+  totalUsersCount: number
+  users: Array<UserType>
+  followingInProgress: Array<number>
+}
+
+type MapDispatchPropsType = {
+  getUsers: (currentPage: number, pageSize: number) => void
+  unfollow: (userId: number) => void
+  follow: (userId: number) => void
+}
+
+type OwnPropsType = {
+  pageTitle: string
+}
+
+type PropsType = MapStatePropsType & MapDispatchPropsType & OwnPropsType
+
+class UsersContainer extends React.Component<PropsType> {
   componentDidMount() {
     this.props.getUsers(this.props.currentPage, this.props.pageSize);
 
-    /*this.props.toggletIsFetching(true);
-    usersAPI.getUsers().then((data) => {
-      this.props.toggletIsFetching(false);
-      this.props.setUsers(data.items);
-      this.props.setTotalUsersCount(data.totalCount);
-    });*/
   }
 
-  onPageChanget = (pageNumber) => {
+  onPageChanget = (pageNumber: number) => {
+    // @ts-ignore
     this.props.setCurrentPage(pageNumber);
+    // @ts-ignore
     this.props.toggletIsFetching(true);
     axios
+    // @ts-ignore
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`
       )
+      // @ts-ignore
       .then((response) => {
+        // @ts-ignore
         this.props.toggletIsFetching(false);
+        // @ts-ignore
         this.props.setUsers(response.data.items);
       });
   };
@@ -52,6 +75,7 @@ class UsersContainer extends React.Component {
   render() {
     return (
       <>
+        <h2>{this.props.pageTitle}</h2>
         {this.props.isFetching ? <Preloader /> : null}
         <Users
           totalUsersCount={this.props.totalUsersCount}
@@ -61,6 +85,7 @@ class UsersContainer extends React.Component {
           users={this.props.users}
           follow={this.props.follow}
           unfollow={this.props.unfollow}
+          // @ts-ignore
           toggletIsFollowingProgres={this.props.toggletIsFollowingProgres}
           followingInProgress={this.props.followingInProgress}
         />
@@ -69,7 +94,7 @@ class UsersContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppStateType): MapStatePropsType => {
   return {
     users: getUsersSel(state),
     pageSize: getPageSize(state),
@@ -79,29 +104,8 @@ const mapStateToProps = (state) => {
     followingInProgress: getFollowingInProgress(state),
   };
 };
-/*const mapDispatchToProps = (dispatch) => {
-  return {
-    follow: (userId) => {
-      dispatch(followAC(userId));
-    },
-    unfollow: (userId) => {
-      dispatch(unfollowAC(userId));
-    },
-    setUsers: (users) => {
-      dispatch(setUsersAC(users));
-    },
-    setCurrentPage: (pageNumber) => {
-      dispatch(setCurrentPageAC(pageNumber));
-    },
-    setTotalUsersCount: (totalCount) => {
-      dispatch(setTotalUsersCountAC(totalCount));
-    },
-    toggletIsFetching: (isFetching) => {
-      dispatch(toggletIsFetchingAC(isFetching));
-    },
-  };
-};*/
-export default compose(
+
+export default compose<React.Component>(
   // withAuthRedirect,
   connect(mapStateToProps, {
     follow,
