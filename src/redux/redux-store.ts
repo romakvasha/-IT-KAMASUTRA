@@ -24,6 +24,9 @@ const reducers = combineReducers({
   app: appReducer,
 });
 
+type ReducerType = typeof reducers; // (globalstate: AppStateType) => AppStateType
+export type AppStateType = ReturnType<ReducerType>
+// @ts-ignore
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   reducers,
